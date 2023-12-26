@@ -1,0 +1,21 @@
+#pragma once
+#include "Shape.h"
+#include "Line.h"
+
+class Ellipse : public Shape
+{
+private:
+	const int a = 150;
+	const int b = 80;
+public:
+	Ellipse(Point click, Color colorFill);
+
+	void draw(Canvas& canvas);
+
+	void fill(Canvas& canvas);
+
+	std::string toString();
+};
+
+
+

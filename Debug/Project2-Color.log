@@ -1,0 +1,3 @@
+﻿  AppProcessor.cpp
+D:\NT\Junior\Computer Graphics\Code\Project2-Color\AppProcessor.cpp(137,27): warning C4018: '<': signed/unsigned mismatch
+  Project2-Color.vcxproj -> D:\NT\Junior\Computer Graphics\Code\Project2-Color\Debug\Project2-Color.exe

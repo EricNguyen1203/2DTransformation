@@ -1,0 +1,9 @@
+﻿  AppProcessor.cpp
+D:\NT\Junior\Computer Graphics\Code\Project2-Color\AppProcessor.cpp(165,27): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+  Generating code
+  2 of 684 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Project2-Color.vcxproj -> D:\NT\Junior\Computer Graphics\Code\Project2-Color\Release\Project2-Color.exe

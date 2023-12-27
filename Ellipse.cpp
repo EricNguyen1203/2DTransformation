@@ -6,43 +6,93 @@ Ellipse::Ellipse(Point click, Color colorFill) : Shape(click, colorFill) {
 }
 
 void Ellipse::draw(Canvas& canvas) {
-	float x = 0, y = this->b;
-	float p = (b * b) - (a * a * b) + (a * a * 0.25);
-	float dx = 0, dy = 2 * a * a * y;
-
 	glColor3ub(Color::m_BLACK.getRed(), Color::m_BLACK.getGreen(), Color::m_BLACK.getBlue());
 
-	while (dx <= dy) {
-		center.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		if (p < 0) {
-			p += b * b * (2 * x + 3);
-		}
-		else {
-			p += b * b * (2 * x + 3) - 2 * a * a * (y - 1);
-			y -= 1;
-			dy = 2 * a * a * y;
-		}
-		x += 1;
-		dx = 2 * b * b * x;
-	}
-	p = b * b * (x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
-	while (y >= 0) {
-		center.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		if (p > 0) {
-			p += a * a * (3 - 2 * y);
-		}
-		else {
-			p += 2 * b * b * (x + 1) + a * a * (3 - 2 * y);
-			x += 1;
-		}
-		y -= 1;
-	}
+    if (a <= 0 || b <= 0) {
+        return;
+    }
+
+    // Draw boundary
+    int xT = center.getX(), yT = center.getY();
+    int x = 0, y = b;
+    int p;
+    int x0 = round(a * a * 1.0 / (sqrt(a * a + b * b)));
+
+    Point startPoint = matrix.TransformPoint(Point(x + xT, y + yT));
+    int minX = startPoint.getX(), maxX = startPoint.getX();
+    int minY = startPoint.getY(), maxY = startPoint.getY();
+
+    std::vector<Point> prevPoints;
+    // First region
+    p = round(a * a / 4 + b * b - a * a * b);
+    while (x <= x0) {
+        // Translate the points to its actual position then set pixels
+        std::vector<Point> points = {
+            Point(x + xT, y + yT),
+            Point(-x + xT, y + yT),
+            Point(x + xT, -y + yT),
+            Point(-x + xT, -y + yT)
+        };
+        std::vector<Point> tmp;
+        for (int i = 0; i < 4; i++) {
+            Point newP = matrix.TransformPoint(points[i]);
+            if (prevPoints.size() > 0) {
+                Point prevP = prevPoints[i];
+                Line(prevP, newP, layer).draw(canvas);
+            }
+            tmp.push_back(newP);
+            newP.setPixel(canvas, Color::m_BLACK, layer, true);
+            minX = std::min(minX, newP.getX());
+            maxX = std::max(maxX, newP.getX());
+            minY = std::min(minY, newP.getY());
+            maxY = std::max(maxY, newP.getY());
+        }
+        prevPoints = tmp;
+
+        if (p < 0) {
+            p += b * b * (2 * x + 3);
+        }
+        else {
+            p += b * b * (2 * x + 3) - a * a * (2 * y - 2);
+            y--;
+        }
+        x++;
+    }
+
+    // Second region
+    p = round(b * b * (x + 1 / 2) * (x + 1 / 2) + a * a * (y - 1) * (y - 1) - a * a * b * b);
+    while (y >= 0) {
+        std::vector<Point> points = {
+            Point(x + xT, y + yT),
+            Point(-x + xT, y + yT),
+            Point(x + xT, -y + yT),
+            Point(-x + xT, -y + yT)
+        };
+        std::vector<Point> tmp;
+        for (int i = 0; i < 4; i++) {
+            Point newP = matrix.TransformPoint(points[i]);
+            if (prevPoints.size() > 0) {
+                Point prevP = prevPoints[i];
+                Line(prevP, newP, layer).draw(canvas);
+            }
+            tmp.push_back(newP);
+            newP.setPixel(canvas, Color::m_BLACK, layer, true);
+            minX = std::min(minX, newP.getX());
+            maxX = std::max(maxX, newP.getX());
+            minY = std::min(minY, newP.getY());
+            maxY = std::max(maxY, newP.getY());
+        }
+        prevPoints = tmp;
+
+        if (p < 0) {
+            p += b * b * (2 * x + 2) - a * a * (2 * y - 3);
+            x++;
+        }
+        else {
+            p -= a * a * (2 * y - 3);
+        }
+        y--;
+    }
 
 	this->fill(canvas);
 }

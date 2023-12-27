@@ -3,7 +3,7 @@
 #include "ColorFilling.h"
 
 Circle::Circle(Point click, Color colorFill) : Shape(click, colorFill) {
-	center = clickmouse;
+    center = clickmouse;
 }
 
 void Circle::fill(Canvas& canvas) {
@@ -12,42 +12,53 @@ void Circle::fill(Canvas& canvas) {
 }
 
 void Circle::draw(Canvas& canvas) {
-
     glColor3ub(Color::m_BLACK.getRed(), Color::m_BLACK.getGreen(), Color::m_BLACK.getBlue());
 
-	float x = 0, y = radius;
-	float p = 1 - radius;
+    int x = 0, y = radius;
+    int xT = center.getX(), yT = center.getY();
+    int p = 1 - radius;
 
-	while (x <= y) {
-		center.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		if (p < 0) {
-			p += 2 * (x + 1) + 1;
-		}
-		else {
-			p += 2 * (x + 1) + 1 - 2 * (y - 1);
-			y -= 1;
-		}
-		x += 1;
-	}
-	x = radius, y = 0;
-	p = 1 - radius;
-	while (x >= y) {
-		center.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		center.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		if (p < 0) {
-			p += 2 * (y + 1) + 1;
-		}
-		else {
-			p += 2 * (y + 1) + 1 - 2 * (x - 1);
-			x -= 1;
-		}
-		y += 1;
-	}
+    Point startPoint = matrix.TransformPoint(Point(x + xT, y + yT));
+    int minX = startPoint.getX(), maxX = startPoint.getX();
+    int minY = startPoint.getY(), maxY = startPoint.getY();
+
+    std::vector<Point> prevPoints;
+    while (x <= y) {
+        std::vector<Point> points = {
+            Point(x + xT, y + yT),
+            Point(y + xT, x + yT),
+            Point(-x + xT, y + yT),
+            Point(-y + xT, x + yT),
+            Point(-x + xT, -y + yT),
+            Point(-y + xT, -x + yT),
+            Point(x + xT, -y + yT),
+            Point(y + xT, -x + yT)
+        };
+        std::vector<Point> tmp;
+        for (int i = 0; i < 8; i++) {
+            Point newP = matrix.TransformPoint(points[i]);
+            if (prevPoints.size() > 0) {
+                Point prevP = prevPoints[i];
+                Line(prevP, newP, layer).draw(canvas);
+            }
+            tmp.push_back(newP);
+            newP.setPixel(canvas, Color::m_BLACK, layer, true);
+            minX = std::min(minX, newP.getX());
+            maxX = std::max(maxX, newP.getX());
+            minY = std::min(minY, newP.getY());
+            maxY = std::max(maxY, newP.getY());
+        }
+        prevPoints = tmp;
+
+        if (p < 0) {
+            p += 2 * x + 3;
+        }
+        else {
+            p += 2 * (x - y) + 3;
+            y--;
+        }
+        x++;
+    }
 
 	this->fill(canvas);
 }

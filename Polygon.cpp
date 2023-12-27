@@ -1,5 +1,5 @@
 #include "Polygon.h"
-#include "logic.h"
+#include "support.h"
 #include "ColorFilling.h"
 
 void Polygon::draw(Canvas& canvas) {

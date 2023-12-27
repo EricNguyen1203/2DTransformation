@@ -170,9 +170,9 @@
     <ClInclude Include="Ellipse.h" />
     <ClInclude Include="EquilTriangle.h" />
     <ClInclude Include="Header.h" />
-    <ClInclude Include="logic.h" />
+    <ClInclude Include="support.h" />
     <ClInclude Include="Matrix.h" />
-    <ClInclude Include="utils.h" />
+    <ClInclude Include="define.h" />
     <ClInclude Include="Hexagon.h" />
     <ClInclude Include="IsoTriangle.h" />
     <ClInclude Include="Line.h" />

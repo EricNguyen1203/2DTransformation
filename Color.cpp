@@ -21,6 +21,15 @@ std::unordered_map<int, Color> Color::colorMap = {
     {CYAN, Color::m_CYAN}
 };
 
+Color::Color() {
+    r = g = b = 0;
+}
+
+void Color::setColor(int r, int g, int b) {
+    this->r = r;
+    this->g = g;
+    this->b = b;
+}
 
 int Color::getRed() {
     return r;

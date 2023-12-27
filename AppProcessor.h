@@ -32,6 +32,8 @@ public:
 
 	static void display();
 
+	static void changeMouseCursor(int cursorType);
+
 	static void Init();
 };
 

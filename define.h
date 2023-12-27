@@ -26,3 +26,7 @@
 #define CYAN 20
 #define QUIT 21
 #define PICK_SHAPE 22
+
+#define IDLE            300
+#define DRAWING         301
+#define SELECTING       302

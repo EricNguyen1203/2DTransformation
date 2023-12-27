@@ -16,11 +16,15 @@ void AppProcessor::menuCallback(int value) {
     option = value;
 
     if (option >= RED && option <= CYAN) {
+        changeMouseCursor(SELECTING);
         defaultColor = Color::colorMap[option];
         if (pickedShape) {
             pickedShape->setColor(defaultColor);
             glutPostRedisplay();
         }
+    }
+    if (option >= LINE && option <= DEVIDE) {
+        changeMouseCursor(DRAWING);
     }
 }
 
@@ -152,6 +156,7 @@ void AppProcessor::mouseCallback(int button, int state, int x, int y) {
             else {
                 pickedShape = nullptr;
             }
+            glutPostRedisplay();
         }
         
     }
@@ -159,8 +164,6 @@ void AppProcessor::mouseCallback(int button, int state, int x, int y) {
 void AppProcessor::normalKeyPressed(unsigned char key, int x, int y) {
     if (!pickedShape)
         return;
-
-    std::cout << "1" << std::endl;
 
     double angle = 0.0;
     double sxy = 0.0;
@@ -236,4 +239,21 @@ void AppProcessor::Init() {
     glutInitWindowSize(AppProcessor::sreenWidth, AppProcessor::sreenLength);
     glutInitWindowPosition(200, 200);
     int window = glutCreateWindow("Le Hinh Nhut Thanh - 21120132 - 21CNTN");
+}
+
+void AppProcessor::changeMouseCursor(int cursorType) {
+    switch (cursorType) {
+    case IDLE:
+        glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+        break;
+    case DRAWING:
+        glutSetCursor(GLUT_CURSOR_CROSSHAIR);
+        break;
+    case SELECTING:
+        glutSetCursor(GLUT_CURSOR_TOP_SIDE);
+        break;
+    default:
+        glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+        break;
+    }
 }

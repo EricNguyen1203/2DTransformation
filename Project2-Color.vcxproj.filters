@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Header Files\Entity">
       <UniqueIdentifier>{f44fd6a8-4e06-4c33-9edd-e15fcac898ff}</UniqueIdentifier>
     </Filter>
@@ -31,11 +27,12 @@
     <Filter Include="Source Files\Support">
       <UniqueIdentifier>{9f7e54a1-b69c-4d5e-a58f-cfd803fa8bec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Add.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
@@ -104,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -182,14 +182,14 @@
     <ClInclude Include="ColorFilling.h">
       <Filter>Header Files\Business</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="define.h">
       <Filter>Header Files\Support</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="logic.h">
-      <Filter>Header Files\Entity</Filter>
+    <ClInclude Include="support.h">
+      <Filter>Header Files\Support</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

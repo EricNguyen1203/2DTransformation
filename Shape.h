@@ -24,9 +24,9 @@ public:
     Shape(Point start, Point end, int layer, Color colorFill = Color::m_BLACK);  // use for drawing edge
 
     // Getter functions
-    Point getBottomLeft() const ;
-    Point getTopRight() const ;
-    Point getCenter() const ;
+    Point getBottomLeft() const;
+    Point getTopRight() const;
+    Point getCenter() const;
     Point getStart() const;
     Point getEnd() const;
     int getLayer() const;

@@ -1,5 +1,6 @@
 #pragma once
 
+
 int clip(int value, int min, int max) {
     if (value < min)
         return min;

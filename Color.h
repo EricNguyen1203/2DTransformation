@@ -1,5 +1,5 @@
 #pragma once
-#include "utils.h"
+#include "define.h"
 #include <unordered_map>
 
 
@@ -28,15 +28,9 @@ public:
 
     Color(int r, int g, int b) : r(r), g(g), b(b){}
 
-    Color() {
-        r = g = b = 0;
-    }
+    Color();
 
-    void setColor(int r, int g, int b) {
-        this->r = r;
-        this->g = g;
-        this->b = b;
-    }
+    void setColor(int r, int g, int b);
 
     bool operator==(Color other) {
         return r == other.r && g == other.g && b == other.b;

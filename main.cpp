@@ -4,7 +4,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
 
     std::cout << "Le Hinh Nhut Thanh - 21120132 - 21CNTN" << std::endl;
-    std::cout << "Computer graphics - Lab 2: 2D Filling Color" << std::endl;
+    std::cout << "Computer graphics - Lab 3: 2D Transformation" << std::endl;
     std::cout << "-----------------------------------------------------------------" << std::endl;
 
     AppProcessor::Init();

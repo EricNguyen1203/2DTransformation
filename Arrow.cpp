@@ -6,6 +6,8 @@ Arrow::Arrow(Point click, Color colorFill) : Polygon(click, colorFill) {
 }
 
 void Arrow::construct() {
+    vertices.clear();
+
     bottomLeft.setX(clickmouse.getX() - (2 * length / 3));
     bottomLeft.setY(clickmouse.getY() - (width / 2));
     topRight.setX(clickmouse.getX() + (length / 3));
@@ -20,6 +22,8 @@ void Arrow::construct() {
     vertices.push_back(Point(clickmouse.getX(), bottomLeft.getY()));
     vertices.push_back(Point(clickmouse.getX(), clickmouse.getY() - nearDistance));
     vertices.push_back(Point(bottomLeft.getX(), clickmouse.getY() - nearDistance));
+
+    Polygon::construct();
 }
 
 std::string Arrow::toString() {

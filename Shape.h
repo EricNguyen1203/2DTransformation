@@ -44,6 +44,8 @@ public:
 
     virtual void setSelectingShape(bool isSelected);
 
+    virtual void construct() = 0;
+
     virtual ~Shape() {}
 
 public:

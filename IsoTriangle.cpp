@@ -5,6 +5,8 @@ IsoTriangle::IsoTriangle(Point click, Color colorFill) : Triangle(click, colorFi
 }
 
 void IsoTriangle::construct() {
+	vertices.clear();
+
 	double angle45 = M_PI / 4.0;
 
 	this->bottomLeft.setX(clickmouse.getX() - static_cast<int>(distance * std::sin(angle45)));
@@ -16,6 +18,8 @@ void IsoTriangle::construct() {
 	vertices.push_back(bottomLeft);
 	vertices.push_back(Point(bottomLeft.getX(), topRight.getY()));
 	vertices.push_back(Point(topRight.getX(), bottomLeft.getY()));
+
+	Polygon::construct();
 }
 
 std::string IsoTriangle::toString() {

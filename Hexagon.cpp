@@ -5,6 +5,8 @@ Hexagon::Hexagon(Point click, Color colorFill) : Polygon(click, colorFill) {
 }
 
 void Hexagon::construct() {
+    vertices.clear();
+
     const int numVertices = 6;  // Pentagon has 5 vertices
 
     // Calculate the angle between vertices
@@ -38,6 +40,8 @@ void Hexagon::construct() {
     bottomLeft.setY(minY);
     topRight.setX(maxX);
     topRight.setY(maxY);
+
+    Polygon::construct();
 }
 
 std::string Hexagon::toString() {

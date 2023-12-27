@@ -5,6 +5,8 @@ Devide::Devide(Point click, Color colorFill) : Polygon(click, colorFill) {
 }
 
 void Devide::construct() {
+	vertices.clear();
+
 	bottomLeft.setX(clickmouse.getX() - length);
 	bottomLeft.setY(clickmouse.getY() - width / 2);
 
@@ -15,6 +17,8 @@ void Devide::construct() {
 	vertices.push_back(Point(clickmouse.getX(), topRight.getY()));
 	vertices.push_back(topRight);
 	vertices.push_back(Point(clickmouse.getX(), bottomLeft.getY()));
+
+	Polygon::construct();
 }
 
 std::string Devide::toString() {

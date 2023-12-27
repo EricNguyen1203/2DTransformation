@@ -47,18 +47,23 @@ void Shape::setSelectingShape(bool isSelected){
 void Shape::setColor(Color color) {
     this->colorFill = color;
 }
+
 std::string Shape::toStrong() {
     return "Shape";
 }
 
 void Shape::translate(double dx, double dy) {
     matrix.Translate(dx, dy);
+
+    construct();
 }
 
 void Shape::rotate(double angle) {
     matrix.Translate(-clickmouse.getX(), -clickmouse.getY());
     matrix.Rotate(angle);
     matrix.Translate(clickmouse.getX(), clickmouse.getY());
+
+    construct();
 }
 
 void Shape::scale(double sx, double sy) {
@@ -67,4 +72,6 @@ void Shape::scale(double sx, double sy) {
 
     matrix.Scale(sx, sy);
     matrix.Translate(clickmouse.getX() - newXC, clickmouse.getX() - newYC);
+
+    construct();
 }

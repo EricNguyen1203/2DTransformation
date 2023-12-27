@@ -5,6 +5,8 @@ Star::Star(Point click, Color colorFill) : Polygon(click, colorFill) {
 }
 
 void Star::construct() {
+    vertices.clear();
+
     const int numVertices = 10;  // Pentagon has 5 vertices
 
     // Calculate the angle between vertices
@@ -40,6 +42,8 @@ void Star::construct() {
     bottomLeft.setY(minY);
     topRight.setX(maxX);
     topRight.setY(maxY);
+
+    Polygon::construct();
 }
 
 std::string Star::toString() {

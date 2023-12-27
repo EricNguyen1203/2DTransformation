@@ -20,6 +20,10 @@ void Polygon::fill(Canvas& canvas) {
     return;
 }
 
+void Polygon::construct() {
+    vertices = matrix.TransformPoints(vertices);
+}
+
 std::string Polygon::toString() {
 	return "Polygon";
 }

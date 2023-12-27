@@ -6,6 +6,8 @@ Multiply::Multiply(Point click, Color colorFill) : Polygon(click, colorFill) {
 }
 
 void Multiply::construct() {
+    vertices.clear();
+
     const int numVertices = 12;  
 
     // Calculate the angle between vertices
@@ -42,6 +44,8 @@ void Multiply::construct() {
     bottomLeft.setY(minY);
     topRight.setX(maxX);
     topRight.setY(maxY);
+
+    Polygon::construct();
 }
 
 std::string Multiply::toString() {

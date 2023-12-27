@@ -11,6 +11,8 @@ public:
 
 	void draw(Canvas& canvas);
 
+	void construct(){}
+
 	std::string toString();
 };
 

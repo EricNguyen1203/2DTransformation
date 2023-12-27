@@ -13,6 +13,8 @@ public:
 
 	void fill(Canvas& canvas);
 
+	void construct(){}
+
 	std::string toString();
 };
 

@@ -5,6 +5,8 @@ Minus::Minus(Point click, Color colorFill) : Polygon(click, colorFill) {
 }
 
 void Minus::construct() {
+	vertices.clear();
+
 	bottomLeft.setX(clickmouse.getX() - length / 2);
 	bottomLeft.setY(clickmouse.getY() - width / 2);
 
@@ -15,6 +17,8 @@ void Minus::construct() {
 	vertices.push_back(Point(bottomLeft.getX(), topRight.getY()));
 	vertices.push_back(topRight);
 	vertices.push_back(Point(topRight.getX(), bottomLeft.getY()));
+
+	Polygon::construct();
 }
 
 std::string Minus::toString() {

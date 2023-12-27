@@ -5,6 +5,8 @@ Square::Square(Point click, Color colorFill) : Polygon(click, colorFill) {
 }
 
 void Square::construct() {
+	vertices.clear();
+
 	bottomLeft.setX(clickmouse.getX() - side / 2);
 	bottomLeft.setY(clickmouse.getY() - side / 2);
 
@@ -15,6 +17,8 @@ void Square::construct() {
 	vertices.push_back(Point(bottomLeft.getX(), topRight.getY()));
 	vertices.push_back(topRight);
 	vertices.push_back(Point(topRight.getX(), bottomLeft.getY()));
+
+	Polygon::construct();
 }
 
 std::string Square::toString() {

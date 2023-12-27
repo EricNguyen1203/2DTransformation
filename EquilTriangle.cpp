@@ -6,6 +6,8 @@ EquilTriangle::EquilTriangle(Point click, Color colorFill) : Triangle(click, col
 }
 
 void EquilTriangle::construct() {
+	vertices.clear();
+
 	// Rotate the other two vertices by 120 and 240 degrees around the center
 	double angle60 = M_PI / 3.0;
 	this->bottomLeft.setX(clickmouse.getX() - static_cast<int>(distance * std::sin(angle60)));
@@ -17,6 +19,8 @@ void EquilTriangle::construct() {
 	vertices.push_back(bottomLeft);
 	vertices.push_back(Point(bottomLeft.getX() + ((topRight.getX() - bottomLeft.getX()) / 2), topRight.getY()));
 	vertices.push_back(Point(topRight.getX(), bottomLeft.getY()));
+
+	Polygon::construct();
 }
 
 std::string EquilTriangle::toString() {

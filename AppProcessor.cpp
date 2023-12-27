@@ -194,8 +194,6 @@ void AppProcessor::specialKeyPressed(int key, int x, int y) {
     if (!pickedShape)
         return;
 
-    std::cout << "1" << std::endl;
-
     // Up, down, left, right arrow key handlers
     double dx = 0.0, dy = 0.0;
     switch (key) {
@@ -205,10 +203,10 @@ void AppProcessor::specialKeyPressed(int key, int x, int y) {
     case GLUT_KEY_RIGHT:
         dx = 1;
         break;
-    case GLUT_KEY_UP:
+    case GLUT_KEY_DOWN:
         dy = -1;
         break;
-    case GLUT_KEY_DOWN:
+    case GLUT_KEY_UP:
         dy = 1;
         break;
     default:

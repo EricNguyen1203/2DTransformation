@@ -5,6 +5,8 @@ Pentagon::Pentagon(Point click, Color colorFill) : Polygon(click, colorFill){
 }
 
 void Pentagon::construct() {
+    vertices.clear();
+
     const int numVertices = 5;  // Pentagon has 5 vertices
 
     // Calculate the angle between vertices
@@ -38,6 +40,8 @@ void Pentagon::construct() {
     bottomLeft.setY(minY);
     topRight.setX(maxX);
     topRight.setY(maxY);
+
+    Polygon::construct();
 }
 
 std::string Pentagon::toString() {

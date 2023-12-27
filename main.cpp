@@ -16,6 +16,10 @@ int main(int argc, char** argv) {
     glClearColor(1.0, 1.0, 1.0, 0.0);
     gluOrtho2D(0.0, AppProcessor::sreenWidth, 0.0, AppProcessor::sreenLength);
 
+    // Key events
+    glutSpecialFunc(AppProcessor::specialKeyPressed);
+    glutKeyboardFunc(AppProcessor::normalKeyPressed);
+
     // Đăng ký hàm callback cho sự kiện nhấn chuột
     glutMouseFunc(AppProcessor::mouseCallback);
 

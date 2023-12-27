@@ -1,5 +1,5 @@
 #pragma once
-#include "AppProcessor.h"
+#include "utils.h"
 
 #include <stack>
 
@@ -7,7 +7,7 @@ class ColorFilling
 {
 public:
     static bool isInScreen(int x, int y, int deltaX, int deltaY) {
-        return (x >= deltaX && x < AppProcessor::sreenWidth - deltaX && y >= deltaY && y < AppProcessor::sreenLength - deltaY);
+        return (x >= deltaX && x < WIN_WIDTH - deltaX && y >= deltaY && y < WIN_LENGTH - deltaY);
     }
 
     static void boundaryFill(int x, int y, int layer, Color fillColor, Canvas& canvas, int nDirect = 4) {
@@ -35,7 +35,7 @@ public:
 
             Point(x, y).setPixel(canvas, fillColor, layer, false);
 
-            if (ColorFilling::isInScreen(x + 1, y, 0 ,0))
+            if (isInScreen(x + 1, y, 0 ,0))
                 s.push(std::make_pair(x + 1, y));
             if (isInScreen(x - 1, y, 0, 0))
                 s.push(std::make_pair(x - 1, y));

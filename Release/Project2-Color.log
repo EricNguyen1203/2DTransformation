@@ -1,32 +1,8 @@
-﻿  Add.cpp
-  AppProcessor.cpp
-D:\NT\Junior\Computer Graphics\Code\colorShape\AppProcessor.cpp(165,27): warning C4018: '<': signed/unsigned mismatch
-  Arrow.cpp
-  Canvas.cpp
-  Cell.cpp
-  Circle.cpp
-  Color.cpp
-  Devide.cpp
-  Ellipse.cpp
-  EquilTriangle.cpp
-  Hexagon.cpp
-  IsoTriangle.cpp
-  Line.cpp
-  main.cpp
-  Minus.cpp
-  Multiply.cpp
-  Pentagon.cpp
-  Point.cpp
-  Polygon.cpp
-D:\NT\Junior\Computer Graphics\Code\colorShape\Polygon.cpp(18,27): warning C4018: '<': signed/unsigned mismatch
-  Rectangle.cpp
-  Compiling...
-  Shape.cpp
-  Square.cpp
-  Star.cpp
+﻿  AppProcessor.cpp
+D:\NT\Junior\Computer Graphics\Code\colorShape\AppProcessor.cpp(228,27): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  676 of 684 functions (98.8%) were compiled, the rest were copied from previous compilation.
-    15 functions were new in current compilation
+  0 of 844 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Project2-Color.vcxproj -> D:\NT\Junior\Computer Graphics\Code\colorShape\Release\Project2-Color.exe

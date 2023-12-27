@@ -5,6 +5,7 @@
 #include <GL/glut.h>
 #include "Canvas.h"
 
+
 class Point {
 private:
     int x;

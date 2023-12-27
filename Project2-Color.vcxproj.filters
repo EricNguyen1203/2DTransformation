@@ -102,6 +102,9 @@
     <ClCompile Include="Color.cpp">
       <Filter>Source Files\Support</Filter>
     </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Add.h">
@@ -181,6 +184,12 @@
     </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Header Files\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="logic.h">
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

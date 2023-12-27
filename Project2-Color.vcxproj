@@ -146,6 +146,7 @@
     <ClCompile Include="IsoTriangle.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Minus.cpp" />
     <ClCompile Include="Multiply.cpp" />
     <ClCompile Include="Pentagon.cpp" />
@@ -169,6 +170,8 @@
     <ClInclude Include="Ellipse.h" />
     <ClInclude Include="EquilTriangle.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="logic.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="Hexagon.h" />
     <ClInclude Include="IsoTriangle.h" />

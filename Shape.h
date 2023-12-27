@@ -1,5 +1,6 @@
 #pragma once
 #include "Point.h"
+#include "Matrix.h"
 
 #include <string>
 
@@ -13,6 +14,7 @@ protected:
     Point fillPoint;
     Color colorFill;
     bool isSelecting = false;
+    Matrix matrix;
 public:
     static int layerOder;
     // Constructors
@@ -43,6 +45,13 @@ public:
     virtual void setSelectingShape(bool isSelected);
 
     virtual ~Shape() {}
+
+public:
+    virtual void translate(double dx, double dy);
+
+    virtual void rotate(double angle);
+
+    virtual void scale(double sx, double sy);
 };
 
 

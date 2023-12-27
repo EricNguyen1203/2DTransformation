@@ -1,5 +1,5 @@
 ﻿#include "Color.h"
-#include "Header.h"
+
 
 // Khởi tạo các màu sắc
 Color Color::m_BLACK = Color(0, 0, 0);

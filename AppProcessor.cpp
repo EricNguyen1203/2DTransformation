@@ -1,5 +1,6 @@
 #include "AppProcessor.h"
 
+
 int AppProcessor::option = -1;
 std::vector<Shape*> AppProcessor::temp;
 int AppProcessor::sreenWidth = WIN_WIDTH;
@@ -154,6 +155,68 @@ void AppProcessor::mouseCallback(int button, int state, int x, int y) {
         }
         
     }
+}
+void AppProcessor::normalKeyPressed(unsigned char key, int x, int y) {
+    if (!pickedShape)
+        return;
+
+    std::cout << "1" << std::endl;
+
+    double angle = 0.0;
+    double sxy = 0.0;
+    // L, R, +, - key handlers
+    switch (key) {
+    case '+':
+        sxy = 1.1;
+        break;
+    case '-':
+        sxy = 0.9;
+        break;
+    case 'l':
+        angle = -1;
+        break;
+    case 'r':
+        angle = 1;
+        break;
+    default:
+        return;
+    }
+
+    if (angle != 0.0)
+        pickedShape->rotate(angle);
+    else
+        pickedShape->scale(sxy, sxy);
+
+    glutPostRedisplay();
+}
+
+void AppProcessor::specialKeyPressed(int key, int x, int y) {
+    if (!pickedShape)
+        return;
+
+    std::cout << "1" << std::endl;
+
+    // Up, down, left, right arrow key handlers
+    double dx = 0.0, dy = 0.0;
+    switch (key) {
+    case GLUT_KEY_LEFT:
+        dx = -1;
+        break;
+    case GLUT_KEY_RIGHT:
+        dx = 1;
+        break;
+    case GLUT_KEY_UP:
+        dy = -1;
+        break;
+    case GLUT_KEY_DOWN:
+        dy = 1;
+        break;
+    default:
+        return;
+    }
+
+    pickedShape->translate(dx, dy);
+    glutPostRedisplay();
 }
 
 void AppProcessor::display() {

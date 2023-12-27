@@ -1,6 +1,7 @@
 #pragma once
 #include "Header.h"
 
+
 class AppProcessor
 {
 public :
@@ -24,6 +25,10 @@ public:
 	static void createMenu(void);
 
 	static void mouseCallback(int button, int state, int x, int y);
+
+	static void normalKeyPressed(unsigned char key, int x, int y);
+
+	static void specialKeyPressed(int key, int x, int y);
 
 	static void display();
 

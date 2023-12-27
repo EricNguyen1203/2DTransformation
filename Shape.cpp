@@ -51,3 +51,20 @@ std::string Shape::toStrong() {
     return "Shape";
 }
 
+void Shape::translate(double dx, double dy) {
+    matrix.Translate(dx, dy);
+}
+
+void Shape::rotate(double angle) {
+    matrix.Translate(-clickmouse.getX(), -clickmouse.getY());
+    matrix.Rotate(angle);
+    matrix.Translate(clickmouse.getX(), clickmouse.getY());
+}
+
+void Shape::scale(double sx, double sy) {
+    int newXC = sx * clickmouse.getX();
+    int newYC = sy * clickmouse.getY();
+
+    matrix.Scale(sx, sy);
+    matrix.Translate(clickmouse.getX() - newXC, clickmouse.getX() - newYC);
+}

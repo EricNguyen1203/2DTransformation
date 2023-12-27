@@ -1,6 +1,9 @@
 #pragma once
 #include "Point.h"
 
+#define I_3  std::vector<std::vector<double>>{{1, 0, 0}, {0, 1, 0}, { 0, 0, 1 }}
+#define M_PI 3.14
+
 class Matrix {
 private:
     std::vector<std::vector<double>> Elements;

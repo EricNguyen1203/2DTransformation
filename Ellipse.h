@@ -7,6 +7,7 @@ class Ellipse : public Shape
 private:
 	const int a = 150;
 	const int b = 80;
+	Point center;
 public:
 	Ellipse(Point click, Color colorFill);
 
@@ -14,7 +15,7 @@ public:
 
 	void fill(Canvas& canvas);
 
-	void construct(){}
+	void construct();
 
 	std::string toString();
 };

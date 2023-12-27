@@ -71,7 +71,7 @@ void Shape::scale(double sx, double sy) {
     int newYC = sy * clickmouse.getY();
 
     matrix.Scale(sx, sy);
-    matrix.Translate(clickmouse.getX() - newXC, clickmouse.getX() - newYC);
+    matrix.Translate(clickmouse.getX() - newXC, clickmouse.getY() - newYC);
 
     construct();
 }

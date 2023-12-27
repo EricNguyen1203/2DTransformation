@@ -1,7 +1,9 @@
 #include "Ellipse.h"
 #include "ColorFilling.h"
 
-Ellipse::Ellipse(Point click, Color colorFill) : Shape(click, colorFill) {}
+Ellipse::Ellipse(Point click, Color colorFill) : Shape(click, colorFill) {
+	center = clickmouse;
+}
 
 void Ellipse::draw(Canvas& canvas) {
 	float x = 0, y = this->b;
@@ -11,10 +13,10 @@ void Ellipse::draw(Canvas& canvas) {
 	glColor3ub(Color::m_BLACK.getRed(), Color::m_BLACK.getGreen(), Color::m_BLACK.getBlue());
 
 	while (dx <= dy) {
-		clickmouse.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		clickmouse.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		clickmouse.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		clickmouse.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
 		if (p < 0) {
 			p += b * b * (2 * x + 3);
 		}
@@ -28,10 +30,10 @@ void Ellipse::draw(Canvas& canvas) {
 	}
 	p = b * b * (x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
 	while (y >= 0) {
-		clickmouse.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		clickmouse.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
-		clickmouse.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
-		clickmouse.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(x, y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(-x, y).setPixel(canvas, Color::m_BLACK, layer, true);
+		center.change(-x, -y).setPixel(canvas, Color::m_BLACK, layer, true);
 		if (p > 0) {
 			p += a * a * (3 - 2 * y);
 		}
@@ -49,6 +51,10 @@ void Ellipse::draw(Canvas& canvas) {
 void Ellipse::fill(Canvas& canvas) {
 	ColorFilling::boundaryFill(this->getCenter().getX(), this->getCenter().getY(), layer, colorFill, canvas);
 	return;
+}
+
+void Ellipse::construct() {
+	center = matrix.TransformPoint(clickmouse);
 }
 
 std::string Ellipse::toString() {

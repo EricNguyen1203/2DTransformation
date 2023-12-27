@@ -4,6 +4,7 @@ class Circle : public Shape
 {
 private:
 	const int radius = 100;
+	Point center;
 public:
 	Circle(Point click, Color colorFill);
 
@@ -11,7 +12,7 @@ public:
 
 	void draw(Canvas& canvas);
 
-	void construct(){}
+	void construct();
 
 	std::string toString();
 };
